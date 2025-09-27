@@ -36,3 +36,13 @@ build/
 
 ### Mac OS ###
 .DS_Store
+# Maven
+/target/
+
+# IDE
+.idea/
+
+
+# OS
+
+Thumbs.db
