@@ -38,6 +38,7 @@ public class MergeSort {
         }
     }
 
+
     private static void merge(int[] a, int[] buffer, int lo, int mid, int hi) {
         System.arraycopy(a, lo, buffer, lo, hi - lo + 1);
 

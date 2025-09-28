@@ -11,3 +11,4 @@ public class ClosestPairResult {
         this.dist = dist;
     }
 }
+
