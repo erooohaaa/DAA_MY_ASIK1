@@ -66,6 +66,7 @@ public class ClosestPair {
         System.arraycopy(aux, 0, points, left, k);
     }
 
+
     private static ClosestPairResult bruteForce(Point[] points, int left, int right) {
         double min = Double.POSITIVE_INFINITY;
         Point a = null, b = null;

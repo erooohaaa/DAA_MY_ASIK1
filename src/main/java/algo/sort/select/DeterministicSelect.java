@@ -14,6 +14,7 @@ public class DeterministicSelect {
         return select(arr, 0, arr.length - 1, k);
     }
 
+
     private static int select(int[] arr, int left, int right, int k) {
         while (true) {
             if (left == right) return arr[left];
