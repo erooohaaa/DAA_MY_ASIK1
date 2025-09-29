@@ -6,11 +6,10 @@ import algo.sort.select.DeterministicSelect;
 import geometry.ClosestPair;
 import geometry.Point;
 import util.Metrics;
+import util.CSVWriter;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
-
 
 public class Runner {
     public static void main(String[] args) throws IOException {
@@ -24,14 +23,16 @@ public class Runner {
         int trials = Integer.parseInt(args[2]);
         String outputFile = args.length > 3 ? args[3] : "results.csv";
 
-        try (FileWriter writer = new FileWriter(outputFile, true)) {
-            writer.write("Algorithm,InputSize,Trial,TimeNanos\n");
-
+        try (CSVWriter writer = new CSVWriter(outputFile)) {
             for (int t = 1; t <= trials; t++) {
                 Metrics.reset();
                 long time = runAlgorithm(algorithm, n);
-                writer.write(String.format("%s,%d,%d,%d\n",
-                        algorithm, n, t, time));
+
+
+                long comparisons = Metrics.getComparisons();
+                int depth = Metrics.getMaxDepth();
+                long allocations = 0;
+                writer.writeRow(n, algorithm, time / 1_000_000, comparisons, allocations, depth);
             }
         }
 
